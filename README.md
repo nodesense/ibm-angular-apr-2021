@@ -76,10 +76,23 @@ auth module - authentication
 ng g module cart
 
 ng g c cart/components/cart
+
 ng g c cart/components/cart-summary
+
 ng g c cart/components/cart-list
+
 ng g c cart/components/checkout
 
 ng g class cart/models/cart-item
+
 ng g service cart/services/cart
 ```
+
+
+
+Cart is a page [add item, empty cart]
+
+    cart-list component to list items in cart
+    cart-summary - how many items, how much money
+
+Checkout is another page with forms

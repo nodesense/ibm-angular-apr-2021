@@ -8,6 +8,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
+import { CartModule } from './cart/cart.module';
 
 // module is a logical collection of components, pipes, directives, + services
 // dependencies to other modules, imports/exports
@@ -25,7 +26,8 @@ import { SharedModule } from './shared/shared.module';
             BrowserModule, 
 
             // App specific modules
-            SharedModule
+            SharedModule,
+            CartModule
     ],
 
     bootstrap: [ // the main/app component which should be loaded very first
