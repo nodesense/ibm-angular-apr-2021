@@ -7,12 +7,21 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-summary.component.scss']
 })
 export class CartSummaryComponent implements OnInit {
+  totalAmount: number = 0;
 
   constructor(private cartService:CartService) {
     console.log('CartSummaryComponent created')
+
+    // initialized only once first time, not updated when cart of manipulated
+    this.totalAmount = this.cartService.totalAmount;
    }
 
   ngOnInit(): void {
+    this.cartService.totalAmount$
+                    .subscribe( n => { // is called whenver new value published
+                      console.log("new total is ", n); 
+                      this.totalAmount = n; // so  the UI is updated
+                    })
   }
 
 }
