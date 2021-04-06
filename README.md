@@ -1,3 +1,23 @@
+# clone the code
+
+```
+git clone https://github.com/nodesense/ibm-angular-apr-2021
+
+cd ibm-angular-apr-2021
+
+
+
+npm install
+
+ng serve
+
+or 
+
+npm start
+
+
+```
+
 # Product app
 
 ```
@@ -52,6 +72,7 @@ auth module - authentication
 ```
 
 ```
+
 ng g module cart
 
 ng g c cart/components/cart
