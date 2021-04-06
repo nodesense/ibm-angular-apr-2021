@@ -1,0 +1,12 @@
+<h2>About</h2>
+
+<!-- about is parent component, 
+     contact is child component
+-->
+
+<app-contact></app-contact>
+
+<p>Liked by {{aboutLikes}} users</p>
+
+<app-page-like [(likes)]="aboutLikes">
+</app-page-like>

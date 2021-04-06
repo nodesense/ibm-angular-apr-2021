@@ -1,0 +1,113 @@
+<h2>Home</h2>
+
+<!--
+    {{expr}} - interpolation, execute expression and convert result to string
+             - to render result in html tag
+    [propertyName]="expr" - property binding/dynamic,
+             - to pass data to html tag/component
+
+    propertyName="fixed/static value" - property binding
+
+    (eventName)="expr" - event binding (click), (mouseenter)...
+-->
+
+<p> Counter => {{counter}} </p>
+
+<p> Counter + 1 => {{counter + 1}} </p>
+
+<p>Welcome {{1 + 4}}</p>
+
+<input [value]="counter" />
+
+<div>
+    Counter + 1 
+
+    <input [value]="counter + 1" />
+</div>
+
+<button (click)="increment()"> +1 </button>
+<button (click)="incrementBy(5)">+5</button>
+
+<!-- not recomeneded - we are doing a Business logic in view -->
+<button (click)="counter = counter - 1">-1</button>
+
+<p> {{counter % 2 == 0? "Even": "Odd"}} </p>
+
+<!-- if counter is even number, should be disabled-->
+<button [disabled]="counter % 2 == 0? true: false" > Click Me </button>
+
+<!--
+    Directives 
+         1.   Attribute Directive
+         2.   Structrual Directive [prefixed with *]
+
+    Attribute Directive: Maniputlate HTML ATTRIBUTE NOT ADDING/REMOVING TAG
+
+        are basically applied on HTML TAG/Component as attribute
+        can be used as property binding []
+
+        to manipulate the html tag attributes / Attribute Directive
+            for example, changing style or class or enabled/disabled, hidden, etc
+
+        <div class="highlight" style 
+
+    Structrual Directive *
+        Manipulate TAG by ADDING or REMOVING TAGs
+-->
+
+<div (click)="divClick($event)" 
+     (mouseenter)="onMouseEnter($event)"
+     (mouseleave)="onMouseLeave($event)"
+     [ngClass]=" {highlight: canHighlight, textColor: true} "
+>
+    <p> Move mouse here </p>
+
+    <!-- event bubble, if any event happends on child tag, 
+        event is bubbled up,
+    
+            bubble up event can be stopped by using stopProbagation
+    
+    -->
+
+    <!-- $event is angular keyword, a event object /data 
+                    passed when event happend -->
+    <button (click)="btnClick($event)">Click</button>
+
+</div>
+
+
+<!-- *ngIf : add tag if condition true remove tag if condition is false-->
+
+<p *ngIf="counter % 2 == 0"> 
+     Even Number
+</p>
+
+<p>Liked by {{homeLikes}} users</p>
+
+<!-- two way binding: option 1 
+    $event is a number, emitted by page like componenent
+     currentValue  + 1 or currentValue - 1
+-->
+<app-page-like [likes]="homeLikes"
+               (likesChange)="homeLikes = $event" 
+>
+</app-page-like>
+
+<!-- option 2, recommended, easily  readable [()]
+
+    sugar part, angular automatically build binding for two way
+-->
+
+<app-page-like [(likes)]="homeLikes" >
+</app-page-like>
+
+
+<!-- (), [] are sugars, angular shall convert internally 
+
+    () - on-eventname
+    [] - bind-propertyname
+-->
+
+<p>Cananoical example</p>
+<input bind-value="counter" />
+<button on-click="counter = counter + 10">+ 10 </button>

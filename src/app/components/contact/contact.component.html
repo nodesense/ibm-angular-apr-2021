@@ -1,0 +1,41 @@
+<p>contact works!</p>
+
+<!-- app-address is not accessible until it is exported from shared module-->
+
+<!-- contact is parent component, address is child component
+
+    In Angular, we can pass data from parent to child using,
+            1. Property Binding []
+            2. @Input()
+-->
+
+<!--reuse address component -->
+
+<app-address  [address]="headOffice"
+              title="Head Office"
+              
+              (callEvent)="handleCall($event)"
+              (email)="handleEmail($event)"
+              
+              >
+</app-address>
+
+<app-address [address]="branchOffice"
+             title="Branch Office"
+
+             (callEvent)="handleCall($event)"
+             (email)="handleEmail($event)"
+             
+             >
+</app-address>
+
+<!-- branchOffice is undefined/null will cause exception,
+     will stop angular rendering-->
+
+<!-- 
+    ?. - elvis operator, for template null/undefined checking
+            if obj is null/undefined, it will not render/resolve attributes
+-->
+<p>City {{branchOffice?.city}}</p>
+
+<p> 1 + 2 = {{ 1 + 2}} </p>
