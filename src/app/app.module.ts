@@ -16,6 +16,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { ProductModule } from './product/product.module';
 
+import {HttpClientModule} from '@angular/common/http';
+
 // module is a logical collection of components, pipes, directives, + services
 // dependencies to other modules, imports/exports
 @NgModule({
@@ -30,12 +32,12 @@ import { ProductModule } from './product/product.module';
 
     imports: [ // other modules to be used in app module
             BrowserModule, 
-
+            HttpClientModule,
             // App specific modules
             SharedModule,
             CartModule,
             ProductModule,
-            
+
             AppRoutingModule,
             RouterModule,
             
