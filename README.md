@@ -95,6 +95,23 @@ ng g service cart/services/cart
 ```
 
 
+```
+ng g module product
+
+
+ng g c product/components/product-home
+ng g c product/components/product-list
+ng g c product/components/product-edit
+ng g c product/components/product-search
+
+ng g interface product/models/brand
+ng g class product/models/product
+
+ng g service product/services/product
+
+```
+
+
 
 Cart is a page [add item, empty cart]
 

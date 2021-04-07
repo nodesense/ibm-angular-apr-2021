@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import {RouterModule} from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { ProductModule } from './product/product.module';
 
 // module is a logical collection of components, pipes, directives, + services
 // dependencies to other modules, imports/exports
@@ -33,8 +34,11 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
             // App specific modules
             SharedModule,
             CartModule,
+            ProductModule,
+            
             AppRoutingModule,
-            RouterModule
+            RouterModule,
+            
     ],
 
     bootstrap: [ // the main/app component which should be loaded very first

@@ -1,0 +1,52 @@
+// product.routing.ts
+
+import {NgModule} from '@angular/core';
+
+import {RouterModule, Routes} from '@angular/router';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { ProductHomeComponent } from './components/product-home/product-home.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+
+const routes: Routes = [
+    {
+        // parent page, hostd into the app.component.html
+        path: 'products',
+        component: ProductHomeComponent,
+
+        // nested navigation
+        children: [
+            {
+                path: '', // localhost:4200/products
+                component: ProductListComponent
+            },
+            {
+                path: 'create', // products/create
+                component: ProductEditComponent
+            },
+            {
+                path: 'edit/:id', // products/edit/1234567
+                component: ProductEditComponent
+            },
+            {
+                path: 'search',
+                component: ProductSearchComponent
+            }
+        ]
+    },
+]
+
+@NgModule({
+    imports: [
+        // lazy loaded/sub module, forChild has fewer services
+        RouterModule.forChild(routes)
+    ],
+    exports: [
+        // component, directives, pipes
+        // Modules, all the component, directives, pipes exported in module are re-exported
+        RouterModule
+    ]
+})
+export class ProductRoutingModule {
+
+}
