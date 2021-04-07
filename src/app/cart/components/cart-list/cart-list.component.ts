@@ -14,10 +14,13 @@ export class CartListComponent implements OnInit {
   constructor(private cartService:CartService) {
     console.log('CartListComponent created')
 
-    this.items = this.cartService.cartItems;
+    // this.items = this.cartService.cartItems;
    }
 
   ngOnInit(): void {
+    this.cartService.cartItems$.subscribe(items => { 
+      this.items = items
+    })
   }
 
 }

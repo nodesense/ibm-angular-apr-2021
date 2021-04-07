@@ -96,3 +96,30 @@ Cart is a page [add item, empty cart]
     cart-summary - how many items, how much money
 
 Checkout is another page with forms
+
+
+```javascript
+class Square {
+    
+    constructor() {
+        this._side = 0
+    }
+
+    get side() {
+        console.log('get size called')
+        return this._side;
+    }
+
+    set side(value) {
+        console.log('set size called', value)
+        this._side = value
+    }
+}
+
+let s = new Square()
+
+console.log(s.side) / /calls get side()
+s.side = 2; // calls setter
+```
+
+

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../models/cart-item';
 
-import {Subject} from 'rxjs';
+import {Subject, BehaviorSubject} from 'rxjs';
 
 
 /*
@@ -24,14 +24,58 @@ Services:
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: CartItem[] = []; // ref type
-  totalQuantity: number = 0; // value type
-  totalAmount: number = 0;
 
-  totalAmount$: Subject<number> = new Subject<number>();
+  private cartItems: CartItem[] = []; // ref type
+  private totalQuantity: number = 0; // value type
+  private totalAmount: number = 0;
+
+  // Subject publish the value only when called .next method
+  //totalAmount$: Subject<number> = new Subject<number>();
+  //totalQuantity$: Subject<number> = new Subject<number>();
+
+  // behavioursubject holds initial value, or last known value in memory
+  // whenever a consumer subscribe, behaviour subject immediately provide last known value
+  // it won't wait for .next/publish to be called to call subscribe
+  totalAmount$: BehaviorSubject<number> = new BehaviorSubject<number>(this.totalAmount);
+  totalQuantity$: BehaviorSubject<number> = new BehaviorSubject<number>(this.totalQuantity);
+  cartItems$: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>(this.cartItems);
 
   constructor() { 
     console.log('CartService created..')
+  }
+
+
+  get amount(): number {
+    return this.totalAmount;
+  }
+
+  set amount(value: number) {
+    if (value >= 0) {
+      this.totalAmount = value; // mutation of totalAmount
+       //  publish the value here
+      this.totalAmount$.next(this.totalAmount);
+    }
+    // else you may throw error
+  }
+
+  get quantity(): number {
+    return this.totalQuantity
+  }
+
+  set quantity(value: number) {
+    if (value >=0 ){
+      this.totalQuantity = value;
+      this.totalQuantity$.next(this.totalQuantity);
+    }
+  }
+
+  get items(): CartItem[] {
+    return this.cartItems;
+  }
+
+  set items(value: CartItem[]) {
+    this.cartItems = value;
+    this.cartItems$.next(this.cartItems);
   }
 
   calculate() {
@@ -41,25 +85,39 @@ export class CartService {
       qty += item.qty;
     }
 
-    this.totalAmount = amt;
-    this.totalQuantity = qty;
+    this.amount = amt; // this calls the setter for amount, assign totalAmount, publish the totalAmount
+    this.quantity = qty;
+
+    //this.totalAmount = amt;
+    //this.totalQuantity = qty;
 
     console.log("Amount ", this.totalAmount);
     console.log("qty ", this.totalQuantity);
 
     // publish the value for totalAmount
-    this.totalAmount$.next(this.totalAmount);
+    // since we use behaviour subject, published value in .next is stored as last known value in behaviour subject
+    
+    // this.totalAmount$.next(this.totalAmount);
+    //this.totalQuantity$.next(this.totalQuantity);
   }
 
   addItem(item: CartItem) {
-    this.cartItems.push(item)
+    //this.cartItems.push(item); // mutable, modifing existing array
+    //this.items = this.cartItems; 
+    const cartItems = [...this.cartItems, item] // immutable 
+    this.items =  cartItems; // calling setter, publishing the values too
+    
     this.calculate();
   }
 
   empty() {
     //FIXME
-    // this.cartItems = []; // immutable
-    this.cartItems.splice(0, this.cartItems.length); // mutable
+    this.cartItems = []; // immutable, create and assign new object
+    // this.cartItems.splice(0, this.cartItems.length); // mutable
+
+    // FIXME: show demo of mutable, immutable array
+    this.items = this.cartItems; 
+
     this.calculate();
   }
 }
