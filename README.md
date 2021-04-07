@@ -43,6 +43,12 @@ ng g c components/contact
 ng g c components/header
 
 ng g c components/footer
+
+
+ng g c components/not-found
+
+ng g c components/forbidden
+
 ```
 
 ## how to add a custom module

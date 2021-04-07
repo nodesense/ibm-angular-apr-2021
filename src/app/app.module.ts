@@ -9,6 +9,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
 import { CartModule } from './cart/cart.module';
+import { AppRoutingModule } from './app.routing';
+
+import {RouterModule} from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 // module is a logical collection of components, pipes, directives, + services
 // dependencies to other modules, imports/exports
@@ -17,7 +22,7 @@ import { CartModule } from './cart/cart.module';
         AppComponent, 
         HomeComponent, 
         AboutComponent, 
-        ContactComponent, HeaderComponent, FooterComponent,
+        ContactComponent, HeaderComponent, FooterComponent, NotFoundComponent, ForbiddenComponent,
         // Header,
         // Footer, Home.....
     ], 
@@ -27,7 +32,9 @@ import { CartModule } from './cart/cart.module';
 
             // App specific modules
             SharedModule,
-            CartModule
+            CartModule,
+            AppRoutingModule,
+            RouterModule
     ],
 
     bootstrap: [ // the main/app component which should be loaded very first

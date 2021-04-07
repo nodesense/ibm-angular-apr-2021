@@ -1,1 +1,28 @@
-<p>header works!</p>
+<div>
+    <span>{{today | date:'yyyy-dd-MM'}}</span>
+
+    <!-- async pipe shall accept promise or Observable as input
+            SUBSCRIBE from observable, render the published values automatically
+
+        async pipe automatically UNSUBSCRIBE, when the component destroyed
+
+        --
+
+        Pipes can be nested, value | pipe1 | pipe2 ....
+    -->
+
+    <!-- routerLink is directive from RouterMoulde, it ensure that navigation happend with in SPA
+    
+        don't use HREF, it will the page, send request to server
+    -->
+
+    
+    <a routerLink="/" class="button" 
+                      routerLinkActive="success"
+                      [routerLinkActiveOptions]="{exact: true}"
+                      >Home</a>
+    <a routerLink="/about"  class="button" routerLinkActive="success" >About</a>
+    
+    <button>{{totalAmount$ | async | currency:'INR'}} ({{totalQuantity$ | async}} items)</button>
+    <hr />
+</div>
