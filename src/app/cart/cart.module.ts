@@ -16,7 +16,7 @@ import { CartRoutingModule } from './cart.routing';
     CheckoutComponent
   ],
   imports: [
-    CommonModule,
+     CommonModule,
     CartRoutingModule
   ],
   exports: [
