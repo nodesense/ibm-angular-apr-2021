@@ -7,6 +7,8 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductHomeComponent } from './components/product-home/product-home.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { CanEditGuard } from './guards/can-edit.guard';
+import { SaveAlertGuard } from './guards/save-alert.guard';
 
 const routes: Routes = [
     {
@@ -22,11 +24,14 @@ const routes: Routes = [
             },
             {
                 path: 'create', // products/create
-                component: ProductEditComponent
+                component: ProductEditComponent,
+                canDeactivate: [SaveAlertGuard],
             },
             {
                 path: 'edit/:id', // products/edit/1234567
-                component: ProductEditComponent
+                component: ProductEditComponent,
+                canActivate: [CanEditGuard],
+                canDeactivate: [SaveAlertGuard],
             },
             {
                 path: 'search',

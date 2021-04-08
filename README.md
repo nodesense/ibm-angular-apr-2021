@@ -109,7 +109,15 @@ ng g class product/models/product
 
 ng g service product/services/product
 
+
+ng g guard product/guards/save-alert
+ng g guard product/guards/can-edit
+
+
+
 ```
+
+
 
 
 

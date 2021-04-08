@@ -60,7 +60,15 @@ export class ProductEditComponent implements OnInit {
                        .subscribe( savedProduct => {
                           console.log('product saved ', savedProduct)
                           this.product = savedProduct;
+
+                          // clear the form and control status like dirty, prestine, touched
+                          this.productForm.reset(savedProduct);
                        })
+  }
+
+
+  gotoCart() {
+    this.router.navigateByUrl("/cart");
   }
 
 }
