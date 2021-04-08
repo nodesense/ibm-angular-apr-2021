@@ -13,6 +13,9 @@ import { ProductService } from '../../services/product.service';
 export class ProductListComponent implements OnInit {
   products: Product[];
 
+  fieldName: string;
+  sortType: string;
+
   constructor(private productService: ProductService, 
               private cartService: CartService) { }
 

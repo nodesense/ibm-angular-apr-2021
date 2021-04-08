@@ -7,6 +7,7 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductRoutingModule } from './product.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
  
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProductRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ProductModule { }

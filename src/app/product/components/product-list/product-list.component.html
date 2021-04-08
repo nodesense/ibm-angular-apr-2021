@@ -1,5 +1,18 @@
 <h2>Product List</h2>
 
+Field Name 
+<select name="fieldName" [(ngModel)]="fieldName">
+    <option value="price">Price</option>
+    <option value="year">Year</option>
+    <option value="name">Name</option>
+</select>
+
+Sort Type 
+<select name="sortType" [(ngModel)]="sortType">
+    <option value="asc">Asc</option>
+    <option value="desc">Desc</option> 
+</select>
+
 <table>
     <tr>
         <th>Name</th>
@@ -8,7 +21,7 @@
         <th>Ops</th>
     </tr>
 
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products | sort:fieldName:sortType ">
         <td>
             <!-- relative path with in module -->
             <a [routerLink]="['edit', product.id]">
