@@ -119,6 +119,17 @@ ng g guard product/guards/can-edit
 
 
 
+```
+
+ng g directive shared/directives/highlight
+
+ng g pipe shared/pipes/sort
+ng g pipe shared/pipes/filter
+
+```
+
+
+
 
 
 Cart is a page [add item, empty cart]

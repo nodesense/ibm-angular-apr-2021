@@ -1,4 +1,6 @@
-<h2>Home</h2>
+<h2 appHighlight #hl1="appHighlight">Home</h2>
+
+<p>The directive color is {{hl1.color}} </p>
 
 <!--
     {{expr}} - interpolation, execute expression and convert result to string
@@ -11,15 +13,15 @@
     (eventName)="expr" - event binding (click), (mouseenter)...
 -->
 
-<p> Counter => {{counter}} </p>
+<p appHighlight color="lightgreen"> Counter => {{counter}} </p>
 
 <p> Counter + 1 => {{counter + 1}} </p>
 
 <p>Welcome {{1 + 4}}</p>
 
-<input [value]="counter" />
+<input [value]="counter"  appHighlight />
 
-<div>
+<div appHighlight>
     Counter + 1 
 
     <input [value]="counter + 1" />
