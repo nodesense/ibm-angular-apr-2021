@@ -1,1 +1,32 @@
-<p>product-search works!</p>
+<h2>Product Search</h2>
+
+<!-- reative forms, no ngModel, we need to write code for reactiveness -->
+
+<p> Has error {{form.invalid}} </p>
+
+<pre>
+    {{searchControl.errors | json}}
+</pre>
+
+<form [formGroup]="form" >
+    <p>Search</p>
+    <input type="text"
+            formControlName="searchControl"
+    />
+</form>
+
+
+<p>Searching for {{searchText}}</p>
+
+              
+<table>
+  <tr>
+      <th>Product</th>
+      
+  </tr>
+  <tr *ngFor="let p of  products">
+      <td>
+           <span>{{p.name}}</span>
+      </td>
+  </tr>
+</table>

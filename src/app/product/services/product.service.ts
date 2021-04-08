@@ -56,4 +56,11 @@ export class ProductService {
     // returns 200 OK, means, product deleted
     return this.http.delete<any>(`${environment.apiEndPoint}/api/products/${id}`)
   }
+
+
+  // GET /api/products
+  searchProducts(q: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.apiEndPoint}/api/products?q=${q}`);
+  }
+  
 }

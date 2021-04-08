@@ -18,6 +18,7 @@ import { ProductModule } from './product/product.module';
 
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { AuthModule } from './auth/auth.module';
 
 // module is a logical collection of components, pipes, directives, + services
 // dependencies to other modules, imports/exports
@@ -39,7 +40,7 @@ import { CommonModule } from '@angular/common';
             SharedModule,
             CartModule,
             ProductModule,
-
+            AuthModule,
             AppRoutingModule,
             RouterModule,
             
