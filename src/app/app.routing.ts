@@ -22,6 +22,14 @@ const config: Routes = [
         component: ForbiddenComponent
     },
 
+    {
+        // code split, keep product bundle in separate js file
+        // download the bundle when user visit /products link
+        path: 'products',
+        
+        loadChildren: () => import("./product/product.module").then (m => m.ProductModule)
+    },
+
     // Must be last, this shall be matched when no matching route found
     {
         path: '**', // wildcard

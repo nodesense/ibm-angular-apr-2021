@@ -14,7 +14,8 @@ import { AppRoutingModule } from './app.routing';
 import {RouterModule} from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
-import { ProductModule } from './product/product.module';
+
+//import { ProductModule } from './product/product.module';
 
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -39,9 +40,9 @@ import { AuthModule } from './auth/auth.module';
             // App specific modules
             SharedModule,
             CartModule,
-            ProductModule,
+            // ProductModule,
             AuthModule,
-            
+
             AppRoutingModule,
             RouterModule,
             

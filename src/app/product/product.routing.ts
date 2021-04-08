@@ -15,7 +15,8 @@ import { SaveAlertGuard } from './guards/save-alert.guard';
 const routes: Routes = [
     {
         // parent page, hostd into the app.component.html
-        path: 'products',
+        // path: 'products',
+        path: '', // /products coming from app.routing.ts
         component: ProductHomeComponent,
 
         // nested navigation
