@@ -41,6 +41,7 @@ import { AuthModule } from './auth/auth.module';
             CartModule,
             ProductModule,
             AuthModule,
+            
             AppRoutingModule,
             RouterModule,
             

@@ -3,6 +3,8 @@
 import {NgModule} from '@angular/core';
 
 import {RouterModule, Routes} from '@angular/router';
+import { AdminGuard } from '../auth/guards/admin.guard';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductHomeComponent } from './components/product-home/product-home.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -26,11 +28,12 @@ const routes: Routes = [
                 path: 'create', // products/create
                 component: ProductEditComponent,
                 canDeactivate: [SaveAlertGuard],
+                canActivate: [ AdminGuard, AuthGuard]
             },
             {
                 path: 'edit/:id', // products/edit/1234567
                 component: ProductEditComponent,
-                canActivate: [CanEditGuard],
+                canActivate: [CanEditGuard, AdminGuard, AuthGuard],
                 canDeactivate: [SaveAlertGuard],
             },
             {

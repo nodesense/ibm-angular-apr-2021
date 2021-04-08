@@ -29,10 +29,8 @@
 
     <a routerLink="/about"  class="button" routerLinkActive="success" >About</a>
 
-    <a routerLink="/login"  class="button" routerLinkActive="success" >Login</a>
-    
-
     <app-auth-menu ></app-auth-menu>
+
     <button>{{totalAmount$ | async | currency:'INR'}} ({{totalQuantity$ | async}} items)</button>
     <hr />
 </div>

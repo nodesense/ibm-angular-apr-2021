@@ -3,6 +3,7 @@
 import {NgModule} from '@angular/core';
 
 import {RouterModule, Routes} from '@angular/router';
+import { AuthGuard } from '../auth/guards/auth.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
  
@@ -15,7 +16,8 @@ const routes: Routes = [
     {
          // hosted inside app.component.html
         path: 'checkout',
-        component: CheckoutComponent
+        component: CheckoutComponent,
+        canActivate: [AuthGuard]
     }
 ]
 

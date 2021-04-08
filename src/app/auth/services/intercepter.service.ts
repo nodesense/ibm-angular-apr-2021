@@ -25,14 +25,15 @@ export class IntercepterService implements HttpInterceptor  {
     if (!this.authService) {
       this.authService = this.injector.get(AuthService);
     }
-
-    //TODO: Inject token
-
-    request = request.clone({
-      setHeaders: {
-        Authorization: `JWT ${this.authService.getToken()}`
-      }
-    });
+ 
+    if (this.authService.isAuthenticated()) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `JWT ${this.authService.getToken()}`
+        }
+      });
+    }
+ 
     
     return next.handle(request);
   }
