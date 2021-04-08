@@ -4,9 +4,31 @@
      contact is child component
 -->
 
+
+
 <app-contact></app-contact>
+
+<!-- 
+     #fb - refers the real dom of input
+     #fbPara refer to real dom of para
+
+-->
+
+Your Feedback 
+<input name="feedback" #fb >
+
+<p #fbPara>
+     Provide  your feedback
+</p>
+
+<button (click)="fbPara.textContent = fb.value + ' submitted' ">Submit</button>
 
 <p>Liked by {{aboutLikes}} users</p>
 
-<app-page-like [(likes)]="aboutLikes">
+<app-page-like [(likes)]="aboutLikes" #pageLike>
 </app-page-like>
+
+<!-- calls rating() getter -->
+<p>page rating {{pageLike.rating}}</p>
+
+<button (click)="pageLike.reset()">Reset</button>

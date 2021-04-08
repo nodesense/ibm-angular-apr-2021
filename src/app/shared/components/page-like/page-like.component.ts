@@ -35,4 +35,14 @@ export class PageLikeComponent implements OnInit {
     this.likesChange.emit(this.likes - 1);
   }
 
+
+  reset() {
+    console.log('reset is called')
+    this.likesChange.emit(0);
+  }
+
+  get rating() {
+    return this.likes % 6 + ' star'
+  }
+
 }

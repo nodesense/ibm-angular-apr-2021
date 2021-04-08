@@ -1,12 +1,71 @@
 <h2>Product {{product?.id ? "Edit": "Create" }}- {{product?.name}}</h2>
 
-<form (ngSubmit)="saveProduct()">
+
+<!--
+    # - Template (html) reference variable, a variable, defined within view
+    this is NOT TAG ID
+
+    # - scope is limited within component,safer
+
+    Two use cases/features for template ref variable
+        1. To get access to dom element [covered]  #name
+        2. To get access to Directive instance  #name="exportedName like ngModel"
+
+    use this as alternative to document.getElementById, jquery $("#id") 
+                - which will fetch element from another component
+
+    <input #productNameInput text="text" ...>
+    <p #para1 
+
+    productNameInput is a variable, refering to real DOM element of input tag
+    we can also access Template references in Component code using @ViewChild/@ViewChildren
+
+
+
+-->
+
+<!--
+     #productNameInput - get access to dom
+     #productName="ngModel" - get access to directive instance
+
+
+-->
+
+<p >
+    Is form changed? {{productForm?.dirty}}
+</p>
+
+<p >
+    Has form error? {{productForm?.invalid}}
+</p>
+
+
+<form (ngSubmit)="saveProduct()"   #productForm="ngForm" >
     <!-- ngModel is a directive, for two way binding, model <==> view    -->
-    Name <input name="name" [(ngModel)]="product.name" type="text" />
+    Name <input name="name" [(ngModel)]="product.name" type="text"
+                required
+                minlength="4"
+
+                #productNameInput
+                #productName="ngModel"
+    />
+
+    <p *ngIf="productName.invalid">
+        Invalid name
+    </p>
+
+    <pre>
+        Errors for name {{productName.errors | json }}
+    </pre>
+
+    <p *ngIf="productName.errors?.minlength">
+        Name should be minimum of {{productName.errors?.minlength.requiredLength}}, but you entered 
+        {{productName.errors?.minlength.actualLength}},
+    </p>
     
     Year <input name="year" [(ngModel)]="product.year" type="number" />
 
     Price <input name="price" [(ngModel)]="product.price" type="number" />
 
-    <button type="submit">Save</button>
+    <button type="submit" [disabled]="productForm.invalid" >Save</button>
 </form>

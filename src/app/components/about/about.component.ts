@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  aboutLikes = 100000;
+  aboutLikes = 0;
 
   constructor() { }
 
