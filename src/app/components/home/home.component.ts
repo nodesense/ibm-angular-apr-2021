@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   handle: any;
 
-  constructor() { }
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.handle = setInterval( () => {
-      this.counter++;
-      console.log("Timer running on home page ", this.counter)
-    }, 5000);
+
+    // this.handle = setInterval( () => {
+    //   this.counter++;
+    //   console.log("Timer running on home page ", this.counter)
+    // }, 5000);
+
   }
 
   increment() {

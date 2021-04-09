@@ -5,5 +5,5 @@ export class Product {
     public name: string;
     public year: number;
     public price: number;
-    public released: Date;
+    public released?: Date;
 }
