@@ -31,6 +31,9 @@ Sort Type
         <td>{{product.price}}</td>
         <td>{{product.year}}</td>
         <td>
+            
+            <button (click)="addToFav(product)">+Fav</button>
+
             <button (click)="addToCart(product)">+Cart</button>
             <button (click)="deleteProduct(product.id)">X</button>
         </td>

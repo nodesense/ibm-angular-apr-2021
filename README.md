@@ -140,6 +140,71 @@ Cart is a page [add item, empty cart]
 Checkout is another page with forms
 
 
+## ngrx
+
+npm install @ngrx/store
+
+
+```
+ng g module favorite
+
+ng g c favorite/components/favorite
+
+ng g class favorite/models/favorite
+
+```
+
+
+## ngrx
+
+add two numbers 
+
+we need two numbers  - input/parameters a, b, action with parameters
+
+what is the action - add {a, b}
+
+what is implementation = a + b [reducers, pure function]
+
+
+ngrx - Functional Programming
+
+// pure function
+// given the same input, the function should return always same output
+function add(state, value) {
+    // immutable, input arg state is not changed
+    return state + value; 
+}
+
+add(10, 2) // 12
+add(10, 2) // 12
+add(10, 2) // 12
+add(20, 4) // 24
+
+vs Traditional OOP
+
+class Calc {
+    int sum = 0;
+    // impure function, given same input, it doesn't return same output
+    int add(int value) {
+        // mutable sum
+        sum += value;
+        return sum;
+    }
+}
+
+calc = new Calc()
+
+calc.add(10) // 10
+calc.add(10) // 20
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)calc.add(10)
+calc.add(10)calc.add(10)
+calc.add(10)
+
 ```javascript
 class Square {
     
@@ -163,5 +228,7 @@ let s = new Square()
 console.log(s.side) / /calls get side()
 s.side = 2; // calls setter
 ```
+
+
 
 

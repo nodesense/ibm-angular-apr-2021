@@ -5,6 +5,11 @@ import { CartService } from 'src/app/cart/services/cart.service';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 
+import { Store } from '@ngrx/store';
+import { Favorite } from 'src/app/favorite/models/favorite';
+import { addFavorite } from 'src/app/favorite/state/favorite.actions';
+
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -17,7 +22,8 @@ export class ProductListComponent implements OnInit {
   sortType: string;
 
   constructor(private productService: ProductService, 
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private store: Store<{ favorite: Favorite[] }>) { }
 
   ngOnInit(): void {
    this.fetchProducts();
@@ -38,6 +44,13 @@ export class ProductListComponent implements OnInit {
                                         1);
 
     this.cartService.addItem(item);
+  }
+
+  addToFav(product: Product) {
+    const favItem = new Favorite(product.id, product.name)
+    // dispatch the favorites to store
+    // every dispatch shall call reducer, reducer is passed with action obect
+    this.store.dispatch(addFavorite({favorite: favItem}))
   }
 
   deleteProduct(product_id: number) {

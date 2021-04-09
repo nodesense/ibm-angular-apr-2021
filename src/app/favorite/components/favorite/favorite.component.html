@@ -1,0 +1,17 @@
+<h2>Favorites</h2>
+
+       
+<table>
+    <tr>
+        <th>Product</th>
+        <th>-</th>
+    </tr>
+    <tr *ngFor="let p of  favorites$ | async">
+        <td>
+             <span>{{p.name}}</span>
+        </td>
+        <td>
+            <button (click)="remove(p.id)">X</button>
+        </td>
+    </tr>
+  </table>

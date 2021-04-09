@@ -20,6 +20,10 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from './auth/auth.module';
+import { FavoriteModule } from './favorite/favorite.module';
+
+import {StoreModule} from '@ngrx/store';
+import { favoriteReducer } from './favorite/state/favorite.reducers';
 
 // module is a logical collection of components, pipes, directives, + services
 // dependencies to other modules, imports/exports
@@ -39,9 +43,18 @@ import { AuthModule } from './auth/auth.module';
             HttpClientModule, // include HttpClient service
             // App specific modules
             SharedModule,
+            StoreModule.forRoot({ 
+                favorite: favoriteReducer,
+                //cart: cartReducer,
+                //payrole: payroleReducer,
+                //inventory: inventoryReducer
+                // ...
+            }),
             CartModule,
             // ProductModule,
             AuthModule,
+
+            FavoriteModule,
 
             AppRoutingModule,
             RouterModule,
