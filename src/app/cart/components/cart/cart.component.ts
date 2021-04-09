@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CartItem } from '../../models/cart-item';
 import { CartService } from '../../services/cart.service';
 
@@ -8,10 +9,12 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
+  totalAmount$:Observable<number>;
+  
   // we are injecting instance of cartService into cart component
   constructor(private cartService:CartService) { 
     console.log('CartComponent created')
+    this.totalAmount$ = this.cartService.totalAmount$;
   }
 
   ngOnInit(): void {

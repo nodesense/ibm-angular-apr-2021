@@ -3,7 +3,7 @@
 <button (click)="addItem()">Add new Item</button>
 <button (click)="empty()">Empty</button>
 
-<app-cart-list>
+<app-cart-list [totalAmount]="totalAmount$ | async">
 </app-cart-list>
 
 <app-cart-summary>

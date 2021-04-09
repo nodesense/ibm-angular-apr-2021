@@ -1,11 +1,15 @@
 <h4>Shopping Cart</h4>
 
+<h4>Amount {{totalAmount}}</h4>
+
+<button (click)="test()">Same comp event</button>
 <table>
     <tr>
         <th>Name</th>
         <th>Price</th>
         <th>Qty</th>
         <th>Total</th>
+        <th>Total2</th>
         <th>Remove</th>
     </tr>
 
@@ -13,7 +17,10 @@
         <td>{{item.name  | uppercase }}</td>
         <td>{{item.price | currency:'INR' }}</td>
         <td>{{item.qty}}</td>
+        
         <td>{{ (item.price * item.qty) | currency:'INR'  }}</td>
+        <td>{{getTotal(item)}}</td>
+
         <td></td>
     </tr>
 </table>
