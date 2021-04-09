@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Favorite } from '../../models/favorite';
+import { emptyFavorites, removeFavorite } from '../../state/favorite.actions';
 
 @Component({
   selector: 'app-favorite',
@@ -16,6 +17,18 @@ export class FavoriteComponent implements OnInit {
    }
   
   ngOnInit(): void {
+  }
+
+  remove(id: number){
+    const action = removeFavorite({id: id})
+    console.log("Action is ", action)
+    this.store.dispatch(action)
+  }
+
+  empty() {
+    const action = emptyFavorites();
+    console.log("Action is ", action)
+    this.store.dispatch(action)
   }
 
 }
