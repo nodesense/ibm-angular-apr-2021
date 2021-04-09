@@ -1,20 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   homeLikes = 30000;
   
   counter = 0;
   canHighlight = false;
 
+  handle: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.handle = setInterval( () => {
+      this.counter++;
+      console.log("Timer running on home page ", this.counter)
+    }, 5000);
   }
 
   increment() {
@@ -44,6 +50,12 @@ export class HomeComponent implements OnInit {
   onMouseLeave(e:Event) {
     console.log('on mouse leave', e)
     this.canHighlight = false;
+  }
+
+  ngOnDestroy() {
+    console.log("Home component destroy")
+    // stop the timer
+    clearInterval(this.handle);
   }
 
 }

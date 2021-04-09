@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndPoint: 'http://localhost:7070/secured',
+  apiEndPoint: 'http://localhost:7070/delayed',
   authEndPoint: 'http://localhost:7070/oauth/token'
 };
 

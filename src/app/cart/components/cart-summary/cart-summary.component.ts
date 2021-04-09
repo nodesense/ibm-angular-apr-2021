@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -6,9 +7,12 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart-summary.component.html',
   styleUrls: ['./cart-summary.component.scss']
 })
-export class CartSummaryComponent implements OnInit {
+export class CartSummaryComponent implements OnInit, OnDestroy {
   totalAmount: number;
   totalQuantity: number;
+
+  subscription1: Subscription;
+  subscription2: Subscription;
 
   constructor(private cartService:CartService) {
     console.log('CartSummaryComponent created')
@@ -20,17 +24,29 @@ export class CartSummaryComponent implements OnInit {
 
   ngOnInit(): void {
     // while calling totalAmount$.next() in service, the subscribe callback below is called
-    this.cartService.totalAmount$
+    this.subscription1 = this.cartService.totalAmount$
                     .subscribe( n => { // is called whenver new value published
+                      console.log("-- " + Math.random())
                       console.log("new total is ", n); 
+
                       this.totalAmount = n; // so  the UI is updated
                     })
 
-    this.cartService.totalQuantity$
+    this.subscription2 = this.cartService.totalQuantity$
                   .subscribe( n => { // is called whenver new value published
                     console.log("new quantity is ", n); 
                     this.totalQuantity = n; // so  the UI is updated
                   })
+  }
+
+  ngOnDestroy() {
+    if (this.subscription1) {
+      this.subscription1.unsubscribe()
+    }
+
+    if (this.subscription2) {
+      this.subscription2.unsubscribe()
+    }
   }
 
 }
