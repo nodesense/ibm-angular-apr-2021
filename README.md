@@ -232,3 +232,40 @@ s.side = 2; // calls setter
 
 
 
+## Testing
+
+Jasmine
+    spec - specification - test file filename.spec.ts
+
+    describe - test suite/group of test cases
+        will have 1 or more  test cases
+
+    it - english it, test case
+         it("should add two numbers")
+
+    expectation/assertion - conditions
+
+            actual result compared with expected result
+
+            (1 + 1) = actual result 2 
+                    = expected result from engineeer is 2
+
+            expect(1 + 1 actual ).toBe(2 - expected)
+
+
+    test initialier/test setup, executed for every test case
+        beforeEach - for the describe
+            setup the common code, or data for each test
+
+    test cleanup [release memory/stub, mocks etc, timers]
+        afterEach - will be run for all the test cases after test completion
+
+
+    describe - test suite
+     xdescribe - skip the test suite, doesn't run any test
+     fdescribe - focused test, run only focused test
+                    useful in dev time..
+
+                    before checkint, remove fdescribe, maintain describe
+
+    xit - skip test
